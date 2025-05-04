@@ -85,6 +85,19 @@ int main(){
             Seats_pat=Seats_pat>>1;  
             Time_ch1=12; //set Timer 
         }
+        
+        if(Barb2_ch==1){      
+            Time_ch2--; 
+            if (Time_ch2==0) {
+                Barb2_ch=0;    //customer leaves chair and exits 
+            }
+        } else if(adult_no!=0){ 
+            Barb2_ch=1;  //invite customer into chair 
+            adult_no--;  //one adult leaves waiting area 
+            //remaining customers shift right 
+            Seats_pat=Seats_pat>>1;  
+            Time_ch2=12; //set Timer 
+        }
 
           //Check seat 3 
         if(Barb3_ch==1){      
@@ -109,7 +122,9 @@ int main(){
         wait_ms(1000);     //adjust for simulator convenience     
         //notional time delay to set loop time 
         Wall_clk=!Wall_clk;  //the wall clock ticks! 
+        
     }  //end of while (1) 
+
 }  //end of main() 
 
 
